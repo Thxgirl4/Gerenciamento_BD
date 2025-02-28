@@ -44,6 +44,17 @@ order by professor;
 
 select * from qtdprofessores03
 
+create view qtdprofessores04 as
+select oferta.professor, count(oferta.disciplina) AS qtd_disciplina,
+	   s.nome
+from oferta 
+join servidor s
+on oferta.professor = s.id
+group by oferta.professor, s.nome
+order by oferta.professor;
+
+select * from qtdprofessores04
+
 
         
         
