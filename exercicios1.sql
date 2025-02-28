@@ -68,7 +68,21 @@ order by d.nome;
 
 select * from qtd_disciplina
 
+-- exercicio 4
+/* Construa uma visualização que mostra os cargos diferentes do professor ou docente
+que tenham ofertado disciplinas no último semestre.*/
 
+create view cargos_professor as
+select c.nome cnome, s.nome snome, o.disciplina, o.semestre
+from servidor s
+join cargo c
+on s.cargo = c.id
+join oferta o
+on o.professor = s.id
+where o.semestre = '2024.2'
+order by c.nome;
+
+select * from cargos_professor
 
 
 
