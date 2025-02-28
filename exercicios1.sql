@@ -55,6 +55,22 @@ order by oferta.professor;
 
 select * from qtdprofessores04
 
+-- Exercicio 3
+create materialized view qtd_disciplina as
+select count(distinct oferta.disciplina) as qtddisciplina,
+             oferta.semestre, 
+			 d.nome
+from oferta
+join disciplina d
+on oferta.disciplina = d.id
+group by oferta.disciplina, d.nome, oferta.semestre
+order by d.nome;
+
+select * from qtd_disciplina
+
+
+
+
 
         
         
